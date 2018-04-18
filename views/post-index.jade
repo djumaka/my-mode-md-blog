@@ -1,0 +1,12 @@
+extends layout
+
+block content
+  h1 Blog index
+  .card-columns
+    each post in posts
+        .card
+          .card-body
+            h5.card-title= post.getTitle()
+            !{post.getExcerpt()}
+            p.card-text
+              small.text-muted Published #{post.getPublishDate()}
