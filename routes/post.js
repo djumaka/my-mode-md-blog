@@ -1,6 +1,8 @@
 let express = require('express');
-const appRoot = require('app-root-path')
-const {loadPostFromFile, loadRecentPostsList} = require(appRoot + '/lib/FilePostLoader');
+let debug = require('debug');
+const appRoot = require('app-root-path');
+
+let {loadSinglePostFromFile, loadRecentPostsList} = require(appRoot + '/lib/FilePostLoader');
 let router = express.Router();
 
 const {check, validationResult} = require('express-validator/check');
@@ -23,9 +25,9 @@ router.get('/read/:postSlug',
     }
 
     try {
-      let post = loadPostFromFile(req.params.postSlug);
+      let post = loadSinglePostFromFile(req.params.postSlug);
       console.log(post);
-      return res.render('post', {"post": post.getRawPostData()})
+      return res.render('post', {"post": post})
     } catch (e) {
       return redirectTo404(res, e.message);
     }
@@ -36,7 +38,7 @@ router.get('/read/:postSlug',
 
 function redirectTo404(res, debugMessage) {
   debug(debugMessage);
-  return res.status(404).render('404', {'message': 'Page not found '});
+  return res.status(404).render('404', {'message': 'Page not found ' + debugMessage});
 }
 
 module.exports = router;

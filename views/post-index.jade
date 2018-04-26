@@ -1,12 +1,24 @@
 extends layout
 
 block content
-  h1 Blog index
-  .card-columns
-    each post in posts
-        .card
-          .card-body
-            h5.card-title= post.getTitle()
-            !{post.getExcerpt()}
-            p.card-text
-              small.text-muted Published #{post.getPublishDate()}
+  .jumbotron.jumbotron-fluid(style="background-image: url('https://www.djumak.com/assets/hp-splash-min.jpg');background-size:cover;")
+    .container.text-center
+      h1.display-4 Djumak Blog
+      p.lead Random thoughts on development and life
+
+  .container
+    .row
+      .col-lg-12.col-md-10.mx-auto
+
+        each post in posts
+            .card.mb-4
+              .card-body
+                h4.card-title= post.getTitle()
+                h6.card-subtitle.mb-2.text-muted #{post.getPublishDate()}
+                p.card-text !{post.getExcerpt()}
+                a.btn.btn-dark(href="/read/#{post.getSlug()}") Continue reading
+
+
+        hr
+        .clearfix
+           a.btn.btn-dark.float-right(href='#') Older Posts →

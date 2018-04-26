@@ -1,6 +1,15 @@
 extends layout
 
 block content
-  h3= post.title
-  p Welcome to /#{post.slug}
-  p #{post.content}
+
+  .jumbotron.jumbotron-fluid(style="background-image: url('https://www.djumak.com/assets/hp-splash-min.jpg');background-size:cover;")
+    .container.text-center
+      h1.display-4 #{post.getTitle()}
+      p.lead !{post.getExcerpt()}
+
+  article
+    .container
+      .row
+        .col-lg-12.mx-auto
+          p !{post.getContent()}
+          small.text-muted Published #{post.getPublishDate()}

@@ -2,7 +2,33 @@ doctype html
 html
   head
     title= title
-    link(rel='stylesheet', href='https://bootswatch.com/4/sketchy/bootstrap.min.css')
+    link(rel='stylesheet', href='https://bootswatch.com/4/lux/bootstrap.min.css')
     link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel='stylesheet', href='https://use.fontawesome.com/releases/v5.0.10/css/all.css')
+
   body
+
+
     block content
+    footer
+      .container
+        .row
+          .col-lg-12.mx-auto
+            ul.list-inline.text-center
+              li.list-inline-item
+                a(href='http://www.twitter.com/djumaka')
+                  span.fa-stack.fa-lg
+                    i.fa.fa-circle.fa-stack-2x
+                    i.fab.fa-twitter.fa-stack-1x.fa-inverse
+              li.list-inline-item
+                a(href='http://linkedin.com/in/bdjumakov')
+                  span.fa-stack.fa-lg
+                    i.fa.fa-circle.fa-stack-2x
+                    i.fab.fa-linkedin.fa-stack-1x.fa-inverse
+              li.list-inline-item
+                a(href='http://github.com/djumaka')
+                  span.fa-stack.fa-lg
+                    i.fa.fa-circle.fa-stack-2x
+                    i.fab.fa-github.fa-stack-1x.fa-inverse
+            p.copyright.text-muted.text-center Copyright © Djumak.com 2018
+

@@ -1,8 +1,4 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-}
-
-a {
-  color: #00B7FF;
+    border-top: 10px solid #333;
+    font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
