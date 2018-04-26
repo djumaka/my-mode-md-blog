@@ -1,7 +1,7 @@
 let {expect} = require('chai');
 let fsMock = require('mock-fs');
 let fs = require('fs');
-let {loadSinglePostFromFile} = require('../lib/FilePostLoader');
+let {loadSinglePostFromFile, loadRecentPostsList} = require('../lib/FilePostLoader');
 
 const appRoot = require("app-root-path");
 
@@ -48,5 +48,11 @@ describe('FilePostLoader', () => {
     expect(postData.getRawPostData()).to.be.an('object').that.have.property('excerpt', mockPostData.excerpt);
 
     fsMock.restore();
+  });
+
+  it('should load last 10 posts', () => {
+    expect(() => {
+      loadRecentPostsList(1,5);
+    }, '[load recent posts]').to.not.throw();
   });
 });
