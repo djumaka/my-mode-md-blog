@@ -27,7 +27,7 @@ describe('FilePostLoader', () => {
   it('should load proper post', () => {
 
     mock({
-      'C:/Test/djumak-blog/content/post-unittest.json': JSON.stringify(mockPostData)
+      './content/post-unittest.json': JSON.stringify(mockPostData)
     });
 
     let postData = loadSinglePostFromFile('unittest');
