@@ -26,7 +26,6 @@ router.get('/read/:postSlug',
 
     try {
       let post = loadSinglePostFromFile(req.params.postSlug);
-      console.log(post);
       return res.render('post', {"post": post})
     } catch (e) {
       return redirectTo404(res, e.message);
