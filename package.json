@@ -20,7 +20,14 @@
     "morgan": "~1.9.0"
   },
   "devDependencies": {
+    "babel-eslint": "^8.2.3",
     "chai": "^4.1.2",
+    "dependencies": "0.0.1",
+    "eslint": "^4.19.1",
+    "eslint-config-nodejs-recommended": "^2.1.2",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-lodash": "^2.7.0",
     "istanbul": "^0.4.5",
     "mocha": "^5.0.5",
     "mock-fs": "^4.4.2"

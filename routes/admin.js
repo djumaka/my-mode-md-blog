@@ -1,14 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const express = import('express');
+const router = express.Router();
 
 
-router.get('/', function(req, res, next) {
-  return res.render('admin');
-});
+router.get('/', (req, res) => res.render('admin'));
 
-router.get('/api/list-all', function(req, res, next) {
+router.get('/api/list-all', (req, res) => {
   res.setHeader('Content-Type', 'application/json');
-  res.send()
+  res.send();
 });
 
-module.exports = router;
+default export {router};
