@@ -9,4 +9,4 @@ router.get('/api/list-all', (req, res) => {
   res.send();
 });
 
-default export {router};
+export default { router };
