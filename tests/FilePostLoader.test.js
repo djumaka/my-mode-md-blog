@@ -1,9 +1,8 @@
 let {expect} = require('chai');
 let fsMock = require('mock-fs');
-let fs = require('fs');
-let {loadSinglePostFromFile, loadRecentPostsList} = require('../lib/FilePostLoader');
-
 const appRoot = require("app-root-path");
+
+let {loadSinglePostFromFile, loadRecentPostsList} = require('../lib/FilePostLoader');
 
 const mockPostData = {
   "title": 'Post Title',
@@ -35,8 +34,8 @@ describe('FilePostLoader', () => {
 
   it('should load proper post', () => {
 
-    mockFilePath = appRoot + '/content/post-unittest.json';
-    fsMockSettings = {};
+    let mockFilePath = appRoot + '/content/post-unittest.json';
+    let fsMockSettings = {};
     fsMockSettings[mockFilePath] = JSON.stringify(mockPostData);
     fsMock(fsMockSettings);
 
@@ -50,9 +49,21 @@ describe('FilePostLoader', () => {
     fsMock.restore();
   });
 
-  it('should load last 10 posts', () => {
+  it('should load last X posts', () => {
     expect(() => {
-      loadRecentPostsList(1,5);
+      loadRecentPostsList(1, 5);
     }, '[load recent posts]').to.not.throw();
   });
+
+  it('should fail on empty index', () => {
+    let mockFilePath = appRoot + '/content/';
+    let fsMockSettings = {};
+    fsMockSettings[mockFilePath] = {};
+    fsMock(fsMockSettings);
+
+    expect(() => {
+      loadRecentPostsList(1, 5);
+    }, '[load posts from broken index]').to.not.throw();
+
+  })
 });
