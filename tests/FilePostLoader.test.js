@@ -1,4 +1,6 @@
+let {describe, it} = require('mocha');
 let {expect} = require('chai');
+
 let fsMock = require('mock-fs');
 const appRoot = require("app-root-path");
 
@@ -51,7 +53,7 @@ describe('FilePostLoader', () => {
 
   it('should load last X posts', () => {
     expect(() => {
-      loadRecentPostsList(1, 5);
+      loadRecentPostsList();
     }, '[load recent posts]').to.not.throw();
   });
 
@@ -62,7 +64,7 @@ describe('FilePostLoader', () => {
     fsMock(fsMockSettings);
 
     expect(() => {
-      loadRecentPostsList(1, 5);
+      loadRecentPostsList();
     }, '[load posts from broken index]').to.not.throw();
 
     fsMock.restore();
