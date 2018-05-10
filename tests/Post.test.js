@@ -1,8 +1,8 @@
 let {expect} = require('chai');
 let mock = require('mock-fs');
+let markdown = require('markdown-it')();
 let Post = require('../lib/model/Post');
 let {loadSinglePostFromFile} = require('../lib/FilePostLoader');
-let {markdown} = require('markdown');
 
 let mockPostData = {
   "title": 'Post Title',
@@ -40,8 +40,8 @@ describe('FilePostLoader', () => {
     expect(postData.getSlug()).to.equal(mockPostData.slug);
     expect(postData.getPublishDate()).to.equal(mockPostData.publishDate);
     expect(postData.getContentRaw()).to.equal(mockPostData.content);
-    expect(postData.getContent()).to.equal(markdown.toHTML(mockPostData.content));
-    expect(postData.getExcerpt()).to.equal(markdown.toHTML(mockPostData.excerpt));
+    expect(postData.getContent()).to.equal(markdown.render(mockPostData.content));
+    expect(postData.getExcerpt()).to.equal(markdown.render(mockPostData.excerpt));
     expect(postData.getExcerptRaw()).to.equal(mockPostData.excerpt);
 
     mock.restore();

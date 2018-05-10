@@ -1,4 +1,4 @@
-const express = import('express');
+const express = require('express');
 const router = express.Router();
 
 
@@ -9,4 +9,4 @@ router.get('/api/list-all', (req, res) => {
   res.send();
 });
 
-export default { router };
+module.exports = router;
