@@ -65,5 +65,6 @@ describe('FilePostLoader', () => {
       loadRecentPostsList(1, 5);
     }, '[load posts from broken index]').to.not.throw();
 
+    fsMock.restore();
   })
 });
